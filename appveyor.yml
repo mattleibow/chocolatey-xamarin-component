@@ -22,7 +22,7 @@ build_script:
 test_script:
   - ps: >-
       Write-Host "Extracting the package...";
-      Rename-Item "$(Get-Item "*.nupkg")" -NewName "xamarin-component.zip";
+      Copy-Item -Path "$(Get-Item "*.nupkg")" -Destination "xamarin-component.zip";
       $shell = New-Object -ComObject Shell.Application;
       $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
       $destFolder = New-Item -Force -ItemType directory -Path "test";
