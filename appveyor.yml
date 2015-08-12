@@ -31,7 +31,7 @@ test_script:
       $destination.CopyHere($zipFile.Items(), $copyFlags);
       
       Write-Host "Testing the extraction...";
-      $xamcom = Get-Item "xamarin-component.exe";
+      $xamcom = Get-Item "test\xamarin-component.exe";
       If ($zipFile -eq $null)
       {
           Exit 1;
