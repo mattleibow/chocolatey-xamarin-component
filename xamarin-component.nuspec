@@ -5,7 +5,7 @@
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
     <id>xamarin-component</id>
     <title>xamarin-component</title>
-    <version>0.99.0.187</version>
+    <version>$version$</version>
     <authors>Xamarin</authors>
     <owners>mattleibow</owners>
     <summary>Create and package components for the Xamarin Component Store.</summary>

@@ -1,0 +1,47 @@
+# build variables
+os: Visual Studio 2015
+configuration: Release
+platform: Any CPU
+environment:
+  ApiKey:
+    secure: wxXXl1PMM1ifiplhjL4+s0Djdx9B/Nx1yZq6xpyWlNIeJR/QArveSDAefkWlYwdO
+  
+# versioning
+version: 0.99.187.{build}
+
+# build
+branches:
+  only:
+    - master
+build_script: 
+  - ps: >-
+      $packageVersion = "$env:APPVEYOR_BUILD_VERSION";
+      choco pack ./xamarin-component.nuspec --version $packageVersion;
+      
+# tests
+test_script:
+  - ps: >-
+      Write-Host "Extracting the package...";
+      Rename-Item "$(Get-Item "*.nupkg")" -NewName "xamarin-component.zip"
+      $shell = New-Object -ComObject Shell.Application;
+      $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
+      $destFolder = New-Item -Force -ItemType directory -Path "test"
+      $destination = $shell.NameSpace("$destFolder");
+      $copyFlags = 20; # 20 = quiet and overwrite
+      $destination.CopyHere($zipFile.Items(), $copyFlags);
+      
+      Write-Host "Testing the extraction...";
+      $xamcom = Get-Item "xamarin-component.exe";
+      If ($zipFile -eq $null)
+      {
+          Exit 1;
+      }
+  
+# artifacts
+artifacts: 
+  - path: xamarin-component*.nupkg
+
+# deployment
+deploy_script:
+  - ps: >-
+      choco push -k="$env:ApiKey"
