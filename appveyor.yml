@@ -15,15 +15,13 @@ branches:
     - master
 build_script: 
   - ps: >-
-      $packageVersion = "$env:APPVEYOR_BUILD_VERSION";
-      choco pack ./xamarin-component.nuspec --version $packageVersion;
+      choco pack ./xamarin-component.nuspec --version $env:APPVEYOR_BUILD_VERSION;
       
 # tests
 test_script:
   - ps: >-
       Write-Host "Extracting the package...";
-      $packageVersion = "$env:APPVEYOR_BUILD_VERSION";
-      Copy-Item -Path "$(Get-Item "xamarin-component-$packageVersion.nupkg")" -Destination "xamarin-component.zip";
+      Copy-Item -Path "$(Get-Item "xamarin-component.$env:APPVEYOR_BUILD_VERSION.nupkg")" -Destination "xamarin-component.zip";
       $shell = New-Object -ComObject Shell.Application;
       $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
       $destFolder = New-Item -Force -ItemType directory -Path "test";
@@ -40,7 +38,7 @@ test_script:
   
 # artifacts
 artifacts: 
-  - path: xamarin-component-$(APPVEYOR_BUILD_VERSION).nupkg
+  - path: xamarin-component.$(APPVEYOR_BUILD_VERSION).nupkg
 
 # deployment
 deploy_script:
