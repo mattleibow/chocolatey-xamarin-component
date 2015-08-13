@@ -3,11 +3,12 @@ os: Visual Studio 2015
 configuration: Release
 platform: Any CPU
 environment:
+  version: 0.99.0.187
   ApiKey:
     secure: wxXXl1PMM1ifiplhjL4+s0Djdx9B/Nx1yZq6xpyWlNIeJR/QArveSDAefkWlYwdO
   
 # versioning
-version: 0.99.0.187
+version: $(version)-{build}
 
 # build
 branches:
@@ -15,13 +16,13 @@ branches:
     - master
 build_script: 
   - ps: >-
-      choco pack ./xamarin-component.nuspec --version $env:APPVEYOR_BUILD_VERSION;
+      choco pack ./xamarin-component.nuspec --version $env:version;
       
 # tests
 test_script:
   - ps: >-
       Write-Host "Extracting the package...";
-      Copy-Item -Path "$(Get-Item "xamarin-component.$env:APPVEYOR_BUILD_VERSION.nupkg")" -Destination "xamarin-component.zip";
+      Copy-Item -Path "$(Get-Item "xamarin-component.$env:version.nupkg")" -Destination "xamarin-component.zip";
       $shell = New-Object -ComObject Shell.Application;
       $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
       $destFolder = New-Item -Force -ItemType directory -Path "test";
@@ -38,7 +39,7 @@ test_script:
   
 # artifacts
 artifacts: 
-  - path: xamarin-component.$(APPVEYOR_BUILD_VERSION).nupkg
+  - path: xamarin-component.$(version).nupkg
 
 # deployment
 deploy_script:
