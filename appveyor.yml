@@ -7,7 +7,7 @@ environment:
     secure: wxXXl1PMM1ifiplhjL4+s0Djdx9B/Nx1yZq6xpyWlNIeJR/QArveSDAefkWlYwdO
   
 # versioning
-version: 0.99.187.{build}
+version: 0.99.0.187
 
 # build
 branches:
@@ -22,7 +22,8 @@ build_script:
 test_script:
   - ps: >-
       Write-Host "Extracting the package...";
-      Copy-Item -Path "$(Get-Item "*.nupkg")" -Destination "xamarin-component.zip";
+      $packageVersion = "$env:APPVEYOR_BUILD_VERSION";
+      Copy-Item -Path "$(Get-Item "xamarin-component-$packageVersion.nupkg")" -Destination "xamarin-component.zip";
       $shell = New-Object -ComObject Shell.Application;
       $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
       $destFolder = New-Item -Force -ItemType directory -Path "test";
@@ -39,7 +40,7 @@ test_script:
   
 # artifacts
 artifacts: 
-  - path: xamarin-component*.nupkg
+  - path: xamarin-component-$(APPVEYOR_BUILD_VERSION).nupkg
 
 # deployment
 deploy_script:
