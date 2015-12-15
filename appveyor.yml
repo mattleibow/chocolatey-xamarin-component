@@ -3,7 +3,7 @@ os: Visual Studio 2015
 configuration: Release
 platform: Any CPU
 environment:
-  version: 0.99.0.194
+  version: 1.1.0.7
   ApiKey:
     secure: wxXXl1PMM1ifiplhjL4+s0Djdx9B/Nx1yZq6xpyWlNIeJR/QArveSDAefkWlYwdO
   
