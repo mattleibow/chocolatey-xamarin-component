@@ -4,11 +4,11 @@ Chocolatey package for xamarin-component
 
 To install:
 
-    choco install xamarin-component -version 1.1.0.7
+    choco install xamarin-component -version 1.1.0.18
 
 To upgrade:
 
-    choco upgrade xamarin-component -version 1.1.0.7
+    choco upgrade xamarin-component -version 1.1.0.18
 
 This package is the same version as on the Xamarin website https://components.xamarin.com/submit/xpkg.
 The actual application is not versioned, but I use the build number from CI so that old versions can be 
