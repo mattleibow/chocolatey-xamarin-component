@@ -21,21 +21,9 @@ build_script:
 # tests
 test_script:
   - ps: >-
-      Write-Host "Extracting the package...";
-      Copy-Item -Path "$(Get-Item "xamarin-component.$env:version.nupkg")" -Destination "xamarin-component.zip";
-      $shell = New-Object -ComObject Shell.Application;
-      $zipFile = $shell.NameSpace("$(Get-Item "xamarin-component.zip")");
-      $destFolder = New-Item -Force -ItemType directory -Path "test";
-      $destination = $shell.NameSpace("$destFolder");
-      $copyFlags = 20;
-      $destination.CopyHere($zipFile.Items(), $copyFlags);
-      
-      Write-Host "Testing the extraction...";
-      $xamcom = Get-Item "test\tools\xamarin-component.exe";
-      If ($zipFile -eq $null)
-      {
-          Exit 1;
-      }
+      choco install xamarin-component -fdvy -s .;
+      where xamarin-component;
+      xamarin-component help;
   
 # artifacts
 artifacts: 
