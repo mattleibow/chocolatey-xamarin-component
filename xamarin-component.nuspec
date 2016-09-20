@@ -9,7 +9,7 @@
     <owners>mattleibow</owners>
     <summary>Create and package components for the Xamarin Component Store.</summary>
     <description>Create and package components for the Xamarin Component Store.</description>
-    <projectUrl>https://github.com/mattleibow/chocolatey-xamarin-component</projectUrl>
+    <projectUrl>https://components.xamarin.com</projectUrl>
     <tags>xamarin-component package NuGet Xamarin Component</tags>
     <copyright>Xamarin Inc</copyright>
     <licenseUrl>https://store.xamarin.com/terms</licenseUrl>
