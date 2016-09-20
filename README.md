@@ -1,5 +1,7 @@
 # chocolatey-xamarin-component
 
+[![Build status](https://ci.appveyor.com/api/projects/status/qeegur30cd30raew?svg=true)](https://ci.appveyor.com/project/mattleibow/chocolatey-xamarin-component)
+
 Chocolatey package for xamarin-component
 
 To install:
