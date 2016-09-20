@@ -15,8 +15,10 @@
     <licenseUrl>https://store.xamarin.com/terms</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://developer.xamarin.com/guides/cross-platform/advanced/submitting_components</docsUrl>
+    <packageSourceUrl>https://github.com/mattleibow/chocolatey-xamarin-component</packageSourceUrl>
     <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/xamarin-component.png</iconUrl>-->
-    <releaseNotes></releaseNotes>
+    <releaseNotes>https://www.nuget.org/packages/XamarinComponent</releaseNotes>
+    <bugTrackerUrl>https://bugzilla.xamarin.com/buglist.cgi?component=Generation&amp;list_id=233369&amp;product=Components&amp;resolution=---</bugTrackerUrl>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
