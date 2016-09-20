@@ -14,6 +14,7 @@
     <copyright>Xamarin Inc</copyright>
     <licenseUrl>https://store.xamarin.com/terms</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://developer.xamarin.com/guides/cross-platform/advanced/submitting_components</docsUrl>
     <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/xamarin-component.png</iconUrl>-->
     <releaseNotes></releaseNotes>
   </metadata>
